@@ -9,10 +9,12 @@ namespace HackerRankSolutions
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!...");
+            Console.WriteLine("Welcome");
+            var sum = Utils.SumAllNumbersInAFileAndItsSubFile();
+            int len = Utils.infos.Count;
+            for (int i = len - 1; i >= 0 ; i--)
+                Console.WriteLine($"{Utils.infos[i].Filename} - {Utils.infos[i].FileSum}");
 
-            //Console.WriteLine(JsonConvert.SerializeObject(Algo.FindingMissingNumbers(new int[6] { 7, 2, 5, 3, 5, 3 }, new int[8] { 7, 2, 5, 4, 6, 3, 5, 3 })));
-            Console.WriteLine(JsonConvert.SerializeObject(Sorting.SelectionSort(new List<int> { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1})));
 
             Console.ReadLine();
         }
@@ -29,5 +31,7 @@ namespace HackerRankSolutions
 
             Console.WriteLine(res);
         }
+
+        //Console.WriteLine(JsonConvert.SerializeObject(Sorting.SelectionSort(new List<int> { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1})));
     }
 }
