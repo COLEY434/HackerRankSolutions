@@ -39,6 +39,43 @@ namespace HackerRankSolutions
             }
             return smallestIndex;       
         }
+        public static List<int> QuickSort(List<int> arr)
+        {
+            if(arr.Count < 2)
+            {
+                return arr;
+            }
+            else
+            {
+                int pivot = arr[0];
+                //List<int> less = GetSubArrayLesserThanPivot(arr, pivot).ToList();
+                //List<int> greater = GetSubArrayGreaterThanPivot(arr, pivot).ToList();
 
+                var sortedLess = QuickSort(GetSubArrayLesserThanPivot(arr, pivot).ToList());
+                var sortedGreater = QuickSort(GetSubArrayGreaterThanPivot(arr, pivot).ToList());
+
+                sortedLess.Add(pivot);
+                sortedLess.AddRange(sortedGreater);
+
+                return sortedLess;
+            }
+        }
+
+        private static IEnumerable<int> GetSubArrayLesserThanPivot(List<int> arr, int pivot)
+        {
+            foreach(var item in arr)
+            {
+                if (item < pivot)
+                    yield return item;
+            }
+        }
+        private static IEnumerable<int> GetSubArrayGreaterThanPivot(List<int> arr, int pivot)
+        {
+            foreach (var item in arr)
+            {
+                if (item > pivot)
+                    yield return item;
+            }
+        }
     }
 }
