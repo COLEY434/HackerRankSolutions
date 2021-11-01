@@ -15,7 +15,8 @@ namespace HackerRankSolutions
             //for (int i = len - 1; i >= 0 ; i--)
             //    Console.WriteLine($"{Utils.infos[i].Filename} - {Utils.infos[i].FileSum}");
 
-            Console.WriteLine(JsonConvert.SerializeObject(Sorting.QuickSort(new List<int> { 5, 4, 3, 2, 1, 345, 34, 18, 12, 90, 634, 11 })));
+            //Console.WriteLine(JsonConvert.SerializeObject(Sorting.BigSorting(new List<string> { "5", "4", "3", "2", "1", "345", "34", "18", "12", "90", "634", "11"})));
+            Console.WriteLine(FindMaxConsecutiveOnes(new int[] { 1, 1, 0, 1, 1, 1 }));
             Console.ReadLine();
         }
 
@@ -30,6 +31,52 @@ namespace HackerRankSolutions
             });
 
             Console.WriteLine(res);
+        }
+
+        static int FindMaxConsecutiveOnes(int[] nums)
+        {
+            var newWindowStarted = false;
+            var count = 0;
+            var list = new List<int>();
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == 1 && newWindowStarted == false)
+                {
+                    newWindowStarted = true;
+                }
+
+                if (nums[i] == 1)
+                {
+                    count++;
+                }
+                else
+                {
+                    if (newWindowStarted == true)
+                    {
+                        newWindowStarted = false;
+                        list.Add(count);
+                        count = 0;
+                    }
+                }
+            }
+
+            if(count != 0)
+            {
+                list.Add(count);
+                count = 0;
+            }
+
+            int currentVal = 0;
+            foreach (var num in list)
+            {
+                if (num > currentVal)
+                {
+                    currentVal = num;
+                }
+            }
+
+            return currentVal;
         }
 
         //Console.WriteLine(JsonConvert.SerializeObject(Sorting.SelectionSort(new List<int> { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1})));

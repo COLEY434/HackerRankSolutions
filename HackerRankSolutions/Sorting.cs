@@ -77,5 +77,43 @@ namespace HackerRankSolutions
                     yield return item;
             }
         }
+
+        //https://www.hackerrank.com/challenges/big-sorting/problem
+        public static List<string> BigSorting(List<string> unsorted)
+        {
+            if(unsorted.Count < 2)
+            {
+                return unsorted;
+            }
+            else
+            {
+                var pivot = int.Parse(unsorted[0]);
+                var lessSorted = BigSorting(GetLesserThanPivot(unsorted, pivot).ToList());
+                var greaterSorted = BigSorting(GetGreaterThanPivot(unsorted, pivot).ToList());
+
+                lessSorted.Add(pivot.ToString());
+                lessSorted.AddRange(greaterSorted);
+
+                return lessSorted;
+            }
+        }
+
+        private static IEnumerable<string> GetLesserThanPivot(List<string> arr, int pivot)
+        {
+            foreach (var item in arr)
+            {
+                if (int.Parse(item) < pivot)
+                    yield return item;
+            }
+        }
+        private static IEnumerable<string> GetGreaterThanPivot(List<string> arr, int pivot)
+        {
+            foreach (var item in arr)
+            {
+                if (int.Parse(item) > pivot)
+                    yield return item;
+            }
+        }
+
     }
 }
