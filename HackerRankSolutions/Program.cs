@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using HackerRankSolutions.StringManipulation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -10,13 +11,7 @@ namespace HackerRankSolutions
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome");
-            //var sum = Utils.SumAllNumbersInAFileAndItsSubFile();
-            //int len = Utils.infos.Count;
-            //for (int i = len - 1; i >= 0 ; i--)
-            //    Console.WriteLine($"{Utils.infos[i].Filename} - {Utils.infos[i].FileSum}");
-
-            //Console.WriteLine(JsonConvert.SerializeObject(Sorting.BigSorting(new List<string> { "5", "4", "3", "2", "1", "345", "34", "18", "12", "90", "634", "11"})));
-            Console.WriteLine(FindMaxConsecutiveOnes(new int[] { 1, 1, 0, 1, 1, 1 }));
+            Console.WriteLine(StringManipulationMedium.SherlockValidSubstring("abcdefghhgfedecba"));
             Console.ReadLine();
         }
 
